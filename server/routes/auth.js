@@ -1,11 +1,9 @@
 import express from "express";
+/** Controllers */
+import { users } from "../controllers/auth.js";
 
 const router = express.Router();
 
-router.get("/users", (req, res) => {
-  res.json({
-    data: "Ryan Zen David",
-  });
-});
+router.get("/users", users);
 
 export default router;
