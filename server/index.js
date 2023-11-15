@@ -1,19 +1,28 @@
 /*
  * Imports
  */
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import authRoutes from "./routes/auth.js";
 
-/* Execute Express */
+dotenv.config();
+
+const PORT = process.env.PORT || 8000;
+
+/** Execute Express */
 const app = express();
 
-/* Routes */
-app.get("/users", function (req, res) {
-  res.json({
-    data: "Ryan Zen David",
-  });
-});
+/** data base connection */
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log("DB ERROR => ", err));
 
-/* Run This Server */
-app.listen(8000, function () {
-  console.log("Node server is running on port 8000");
+/** Router middleware */
+app.use("/api", authRoutes);
+
+/** Run This Server */
+app.listen(PORT, () => {
+  console.log(`Node server is running on port ${PORT}`);
 });
