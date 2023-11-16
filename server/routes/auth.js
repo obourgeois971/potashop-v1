@@ -1,9 +1,15 @@
 import express from "express";
 /** Controllers */
-import { users } from "../controllers/auth.js";
+import { register, login, secret } from "../controllers/auth.js";
+/** Middleware */
+import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.get("/users", users);
+router.post("/register", register);
+router.post("/login", login);
+
+// testing
+router.get("/secret", requireSignin, isAdmin, secret);
 
 export default router;
