@@ -1,4 +1,5 @@
 import express from "express";
+
 /** Controllers */
 import { register, login, secret } from "../controllers/auth.js";
 /** Middleware */

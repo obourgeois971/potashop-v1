@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.js";
+import categoryRoutes from "./routes/category.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 
 /** Router middleware */
 app.use("/api", authRoutes);
+app.use("/api", categoryRoutes);
 
 /** Run This Server */
 app.listen(PORT, () => {
