@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
     photo: {
-      date: Buffer,
+      data: Buffer,
       contentType: String,
     },
     shipping: {
