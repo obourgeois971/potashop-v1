@@ -1,7 +1,9 @@
+import Jumbotron from "../components/cards/Jumbotron";
+
 export default function Register() {
   return (
     <div>
-      <h1>This is Register component</h1>
+      <Jumbotron title="Register" />
     </div>
   );
 }
