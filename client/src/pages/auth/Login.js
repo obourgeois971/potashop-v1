@@ -3,7 +3,7 @@ import Jumbotron from "../../components/cards/Jumbotron";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login() {
   /** State */
@@ -13,6 +13,7 @@ export default function Login() {
   // hook
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     /** Utilisez la preventDefault()méthode sur
@@ -35,7 +36,7 @@ export default function Login() {
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
         /** redirect Page */
-        navigate("/dashboard");
+        navigate(location.state || "/dashboard");
       }
     } catch (err) {
       console.log(err);
