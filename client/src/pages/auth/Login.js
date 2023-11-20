@@ -21,7 +21,7 @@ export default function Login() {
      * par exemple event.preventDefault(). */
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${process.env.REACT_APP_API}/login`, {
+      const { data } = await axios.post(`/login`, {
         email,
         password,
       });
@@ -35,7 +35,7 @@ export default function Login() {
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
         /** redirect Page */
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err);

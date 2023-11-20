@@ -22,14 +22,11 @@ export default function Register() {
      * par exemple event.preventDefault(). */
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/register`,
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const { data } = await axios.post(`/register`, {
+        name,
+        email,
+        password,
+      });
       console.log(data);
       if (data?.error) {
         toast.error(data.error);
@@ -41,7 +38,7 @@ export default function Register() {
         toast.success("Registration successful");
 
         /** redirect Page */
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err);
