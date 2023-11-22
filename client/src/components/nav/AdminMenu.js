@@ -18,6 +18,12 @@ export default function AdminMenu() {
             Create product
           </NavLink>
         </li>
+
+        <li>
+          <NavLink className="list-group-item" to="/dashboard/admin/products">
+            Product
+          </NavLink>
+        </li>
       </ul>
     </>
   );

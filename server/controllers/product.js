@@ -106,19 +106,19 @@ export const update = async (req, res) => {
     /** Vaidation */
     switch (true) {
       case !name.trim():
-        res.json({ error: "Name is required" });
+        return res.json({ error: "Name is required" });
       case !description.trim():
-        res.json({ error: "Description is required" });
+        return res.json({ error: "Description is required" });
       case !price.trim():
-        res.json({ error: "Price is required" });
+        return res.json({ error: "Price is required" });
       case !category.trim():
-        res.json({ error: "Category is required" });
+        return res.json({ error: "Category is required" });
       case !quantity.trim():
-        res.json({ error: "Quantity is required" });
+        return res.json({ error: "Quantity is required" });
       case !shipping.trim():
-        res.json({ error: "Shipping is required" });
+        return res.json({ error: "Shipping is required" });
       case photo && photo.size > 1000000:
-        res.json({ error: "Image should be less than 1mb in size" });
+        return res.json({ error: "Image should be less than 1mb in size" });
     }
 
     /** Update product */
