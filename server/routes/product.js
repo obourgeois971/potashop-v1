@@ -9,6 +9,7 @@ import {
   photo,
   remove,
   update,
+  filterProducts,
 } from "../controllers/product.js";
 
 /** Middleware */
@@ -22,5 +23,5 @@ router.get("/product/:slug", read);
 router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
-
+router.post("/filtered-products", filterProducts);
 export default router;

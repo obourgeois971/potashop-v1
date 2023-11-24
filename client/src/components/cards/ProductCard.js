@@ -1,11 +1,18 @@
-import moment from "moment";
 import { Badge } from "antd";
 
 export default function ProductCard({ p }) {
   return (
     <div className="card mb-3 hoverable">
       <Badge.Ribbon text={`${p?.sold} sold`} color="red">
-        <Badge.Ribbon>
+        <Badge.Ribbon
+          text={`${
+            p?.quantity >= 1
+              ? `${p?.quantity - p?.sold} in stock`
+              : "Out of stock"
+          } `}
+          placement="start"
+          color="green"
+        >
           <img
             className="card-img-top"
             src={`${process.env.REACT_APP_API}/product/photo/${p._id}`}
@@ -17,6 +24,12 @@ export default function ProductCard({ p }) {
 
       <div className="card-body">
         <h5>{p?.name}</h5>
+        <h4 className="fw-bold">
+          {p?.price?.toLocaleString("fr-FR", {
+            style: "currency",
+            currency: "EUR",
+          })}
+        </h4>
         <p className="card-text">{p?.description?.substring(0, 60)}...</p>
       </div>
       <div className="d-flex justify-content-between">
