@@ -15,6 +15,8 @@ import UserProfile from "./pages/user/Profile";
 import AdminProducts from "./pages/admin/Products";
 import AdminProductUpdate from "./pages/admin/ProductsUpdate";
 import Shop from "./pages/Shop";
+import Search from "./pages/Search";
+import ProductView from "./pages/ProductView";
 
 const PageNotFound = () => {
   return (
@@ -32,6 +34,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/auth";
+import { SearchProvider } from "./context/search";
 // import "antd/dist/antd.css";
 import "antd/dist/antd.min.css";
 
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <SearchProvider>
+        <App />
+      </SearchProvider>
     </AuthProvider>
   </React.StrictMode>
 );

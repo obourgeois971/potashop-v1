@@ -10,10 +10,14 @@ import {
   remove,
   update,
   filterProducts,
+  productsCount,
+  listProducts,
+  productsSearch,
 } from "../controllers/product.js";
 
 /** Middleware */
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
+import product from "../models/product.js";
 
 const router = express.Router();
 
@@ -24,4 +28,8 @@ router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
 router.post("/filtered-products", filterProducts);
+router.get("/products-count", productsCount);
+router.get("/list-products/:page", listProducts);
+router.get("/products/search/:keyword", productsSearch);
+
 export default router;

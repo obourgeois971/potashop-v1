@@ -1,6 +1,7 @@
 import { NavLink, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
+import Search from "../forms/Search";
 
 export default function Menu() {
   /** Hook */
@@ -26,6 +27,9 @@ export default function Menu() {
             SHOP
           </NavLink>
         </li>
+
+        <Search />
+
         {!auth?.user ? (
           <>
             <li className="nav-item">

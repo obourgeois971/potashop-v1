@@ -1,6 +1,6 @@
 export default function Jumbotron({
   title,
-  subTitle = "Welcome to React E-commerce",
+  subTitle = "Welcome to My E-commerce",
 }) {
   return (
     <div
