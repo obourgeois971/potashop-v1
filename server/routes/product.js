@@ -13,6 +13,7 @@ import {
   productsCount,
   listProducts,
   productsSearch,
+  relatedProducts,
 } from "../controllers/product.js";
 
 /** Middleware */
@@ -31,5 +32,6 @@ router.post("/filtered-products", filterProducts);
 router.get("/products-count", productsCount);
 router.get("/list-products/:page", listProducts);
 router.get("/products/search/:keyword", productsSearch);
+router.get("/related-products/:productId/:categoryId", relatedProducts);
 
 export default router;

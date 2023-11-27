@@ -2,11 +2,15 @@ import { NavLink, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import Search from "../forms/Search";
+import useCategory from "../../hooks/useCategory";
 
 export default function Menu() {
-  /** Hook */
+  /** Context */
   const [auth, setAuth] = useAuth("");
+  // hook
+  const categories = useCategory();
   const navigate = useNavigate();
+  console.log("categories in menu => ", categories);
 
   const logout = () => {
     setAuth({ ...auth, user: null, token: "" });
@@ -27,6 +31,37 @@ export default function Menu() {
             SHOP
           </NavLink>
         </li>
+
+        <div className="dropdown">
+          <li>
+            <a
+              className="nav-link pointer dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              Categories
+            </a>
+
+            <ul
+              className="dropdown-menu"
+              // style={{ height: "300px", overflow: "scroll" }}
+              style={{ height: "300px" }}
+            >
+              <li>
+                <NavLink className="nav-link" to="/categories">
+                  All Categories
+                </NavLink>
+              </li>
+
+              {categories?.map((c) => (
+                <li>
+                  <NavLink className="nav-link" to={`/category/${c.slug}`}>
+                    {c.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </li>
+        </div>
 
         <Search />
 

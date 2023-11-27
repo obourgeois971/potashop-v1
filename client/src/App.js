@@ -17,6 +17,8 @@ import AdminProductUpdate from "./pages/admin/ProductsUpdate";
 import Shop from "./pages/Shop";
 import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
+import CategoriesList from "./pages/CategoriesList";
+import CategoryView from "./pages/CategoryView";
 
 const PageNotFound = () => {
   return (
@@ -38,6 +40,8 @@ export default function App() {
         <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/categories" element={<CategoriesList />} />
+        <Route path="/category/:slug" element={<CategoryView />} />
 
         {/** page protégés - privée : user */}
         <Route path="/dashboard" element={<PrivateRoute />}>
