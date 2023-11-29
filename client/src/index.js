@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/auth";
 import { SearchProvider } from "./context/search";
+import { CartProvider } from "./context/cart";
 // import "antd/dist/antd.css";
 import "antd/dist/antd.min.css";
 
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <SearchProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </SearchProvider>
     </AuthProvider>
   </React.StrictMode>
