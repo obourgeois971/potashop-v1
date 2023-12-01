@@ -42,7 +42,7 @@ export default function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register/user" element={<Register />} />
         <Route path="/categories" element={<CategoriesList />} />
         <Route path="/category/:slug" element={<CategoryView />} />
 

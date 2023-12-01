@@ -4,6 +4,8 @@ import fs from "fs";
 import braintree from "braintree";
 import dotenv from "dotenv";
 import Order from "../models/order.js";
+import { sendEmailWithNodemailer } from "../helpers/email.js";
+// const { sendEmailWithNodemailer } = require("../helpers/email");
 
 dotenv.config();
 
@@ -326,29 +328,73 @@ export const orderStatus = async (req, res) => {
   try {
     const { orderId } = req.params;
     const { status } = req.body;
-    const order = await Order.findByIdAndUpdate(orderId, { status });
+    const order = await Order.findByIdAndUpdate(
+      orderId,
+      { status },
+      { new: true }
+    ).populate("buyer", "email name");
+    /*.populate(
+      "buyer",
+      "email name"
+    )*/
     //.populate("buyer", "email name");
     // send email
+    console.log("order.buyer.email=>", order.buyer.email);
+    const { name, email, message } = req.body;
+    console.log("order.name=>", order.name);
+    console.log("order.status=>", order.status);
+    console.log("status=>", status);
+    console.log("name=>", name);
+    console.log("email=>", email);
+    console.log("message=>", message);
+    console.log("req.body=>", req.body);
+    console.log(" order.buyer.email=>", order.buyer.email);
+    console.log(" order=>", order);
 
     // prepare email
-    /*const emailData = {
-      from: process.env.EMAIL_FROM,
-      to: order.buyer.email,
+    const emailData = {
+      // from: process.env.EMAIL_FROM,
+      // to: order.buyer.email,
+      from: process.env.EMAIL_FROM, // MAKE SURE THIS EMAIL IS YOUR GMAIL FOR WHICH YOU GENERATED APP PASSWORD
+      to: "texmex430@gmail.com", // WHO SHOULD BE RECEIVING THIS EMAIL? IT SHOULD BE YOUR GMAIL
       subject: "Order status",
       html: `
         <h1>Hi ${order.buyer.name}, Your order's status is: <span style="color:red;">${order.status}</span></h1>
         <p>Visit <a href="${process.env.CLIENT_URL}/dashboard/user/orders">your dashboard</a> for more details</p>
       `,
     };
+    // res.setHeader("Content-Type", "text/plain");
 
     try {
-      await sgMail.send(emailData);
+      await sendEmailWithNodemailer(req, res, emailData);
     } catch (err) {
       console.log(err);
-    }*/
-    console.log("order by id=>", order);
+    }
     res.json(order);
   } catch (err) {
     console.log(err);
   }
+};
+
+export const contactForm = (req, res) => {
+  console.log(req.body);
+  const { name, email, message } = req.body;
+
+  const emailData = {
+    from: "your_name@gmail.com", // MAKE SURE THIS EMAIL IS YOUR GMAIL FOR WHICH YOU GENERATED APP PASSWORD
+    to: "your_name@gmail.com", // WHO SHOULD BE RECEIVING THIS EMAIL? IT SHOULD BE YOUR GMAIL
+    subject: "Website Contact Form",
+    text: `Email received from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender message: ${message}`,
+    html: `
+        <h4>Email received from contact form:</h4>
+        <p>Sender name: ${name}</p>
+        <p>Sender email: ${email}</p>
+        <p>Sender message: ${message}</p>
+        <hr />
+        <p>This email may contain sensitive information</p>
+        <p>https://onemancode.com</p>
+    `,
+  };
+
+  sendEmailWithNodemailer(req, res, emailData);
 };

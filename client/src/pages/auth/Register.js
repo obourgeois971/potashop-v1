@@ -38,7 +38,7 @@ export default function Register() {
         toast.success("Registration successful");
 
         /** redirect Page */
-        navigate("/dashboard");
+        navigate("/dashboard/user");
       }
     } catch (err) {
       console.log(err);
