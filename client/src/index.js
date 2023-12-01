@@ -6,8 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/auth";
 import { SearchProvider } from "./context/search";
 import { CartProvider } from "./context/cart";
-// import "antd/dist/antd.css";
-import "antd/dist/antd.min.css";
+import "antd/dist/antd.css";
+// import "antd/dist/antd.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
