@@ -3,10 +3,12 @@ import User from "../models/user.js";
 
 export const requireSignin = (req, res, next) => {
   try {
+    console.log("1");
     const decoded = jwt.verify(
       req.headers.authorization,
       process.env.JWT_SECRET
     );
+    console.log("2");
     // console.log("decoded => ", decoded);
     req.user = decoded;
     next();
@@ -26,4 +28,8 @@ export const isAdmin = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const secret = async (req, res) => {
+  res.json({ currentUser: req.user });
 };

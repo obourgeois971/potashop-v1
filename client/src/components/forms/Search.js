@@ -22,21 +22,23 @@ export default function Search() {
 
   return (
     <form className="d-flex" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        style={{ borderRadius: "0px" }}
-        className="form-control"
-        placeholder="Search"
-        onChange={(e) => setValues({ ...values, keyword: e.target.value })}
-        value={values.keyword}
-      />
-      <button
-        className="btn btn-outline-primary"
-        type="submit"
-        style={{ borderRadius: "0px" }}
-      >
-        Search {values.results.length}
-      </button>
+      <div className="container text-center p-5">
+        <input
+          type="search"
+          style={{ borderRadius: "1px", width: "90%", height: "100%" }}
+          onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+          value={values.keyword}
+        />
+
+        <button
+          className="btn btn-outline-primary"
+          type="submit"
+          style={{ borderRadius: "0px", marginLeft: "10px" }}
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+          Search {values.results.length}
+        </button>
+      </div>
     </form>
   );
 }

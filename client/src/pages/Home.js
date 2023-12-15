@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Jumbotron from "../components/cards/Jumbotron";
 import axios from "axios";
 import ProductCard from "../components/cards/ProductCard";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -51,32 +52,26 @@ export default function Home() {
 
   const arr = [...products];
   const sortedBySold = arr?.sort((a, b) => (a.sold < b.sold ? 1 : -1));
+  const { t } = useTranslation();
 
   return (
     <div>
       <Jumbotron title="Pota Shop" sutTitle="Welcome to My E-commerce" />
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-6">
-            <h2 className="p-3 mt-2 mb-2 h4 bg-light text-center">
-              New Arrivals
-            </h2>
-            <div className="row">
-              {products?.map((p) => (
-                <div className="col-md-6" key={p._id}>
-                  <ProductCard p={p} />
-                </div>
-              ))}
+      <h1>{t("greeting")}</h1>
+
+      <>
+        <div className="container my-3 py-3">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="display-5 text-center">Latest Products</h2>
+              <hr />
             </div>
           </div>
-
-          <div className="col-md-6">
-            <h2 className="p-3 mt-2 mb-2 h4 bg-light text-center">
-              Best Sellers
-            </h2>
+          <div className="row justify-content-center">
+            {/*loading ? <Loading /> : <ShowProducts />*/}
             <div className="row">
-              {sortedBySold?.map((p) => (
-                <div className="col-md-6" key={p._id}>
+              {products?.map((p) => (
+                <div className="col-md-3" key={p._id}>
                   <ProductCard p={p} />
                 </div>
               ))}
@@ -98,7 +93,7 @@ export default function Home() {
             </button>
           )}
         </div>
-      </div>
+      </>
     </div>
   );
 }

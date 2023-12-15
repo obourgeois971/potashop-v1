@@ -21,6 +21,9 @@ import CategoriesList from "./pages/CategoriesList";
 import CategoryView from "./pages/CategoryView";
 import Cart from "./pages/Cart";
 import AdminOrders from "./pages/admin/Orders";
+import Signup from "./pages/auth/Signup";
+import AccountActivation from "./pages/auth/AccountActivation";
+import Footer from "./components/routes/Footer";
 
 const PageNotFound = () => {
   return (
@@ -41,6 +44,8 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/search" element={<Search />} />
         <Route path="/product/:slug" element={<ProductView />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/activation/:token" element={<AccountActivation />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register/user" element={<Register />} />
         <Route path="/categories" element={<CategoriesList />} />
@@ -68,6 +73,7 @@ export default function App() {
 
         <Route path="*" element={<PageNotFound />} replace />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
