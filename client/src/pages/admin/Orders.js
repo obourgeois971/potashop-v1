@@ -51,7 +51,11 @@ export default function AdminOrders() {
 
   return (
     <>
-      <Jumbotron title={`Hello ${auth?.user?.name}`} subTitle="Dashboard" />
+      <Jumbotron
+        title={`Hello ${auth?.user?.name}`}
+        subTitle="Dashboard"
+        img="/images/baobab.png.jpg"
+      />
 
       <div className="container-fluid">
         <div className="row">

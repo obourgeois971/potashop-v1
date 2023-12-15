@@ -34,6 +34,7 @@ export default function CategoryView() {
       <Jumbotron
         title={category?.name}
         subTitle={`${products?.length} products found in ${category?.name}`}
+        img="/images/baobab.png.jpg"
       />
 
       <div className="container-fluid">

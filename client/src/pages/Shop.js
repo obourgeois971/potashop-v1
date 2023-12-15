@@ -67,7 +67,11 @@ export default function Shop() {
 
   return (
     <>
-      <Jumbotron title="Hello World" subTitle="Welcome to My E-commerce" />
+      <Jumbotron
+        title="Hello World"
+        subTitle="Welcome to My E-commerce"
+        img="/images/baobab.png.jpg"
+      />
 
       {/* <pre>{JSON.stringify({ checked, radio }, null, 4)}</pre> */}
 

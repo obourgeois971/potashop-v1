@@ -13,6 +13,7 @@ export default function Search() {
             ? "No products found"
             : `Found ${values?.results?.length} products`
         }
+        img="/images/baobab.png.jpg"
       />
       <div className="container mt-3">
         <div className="row">

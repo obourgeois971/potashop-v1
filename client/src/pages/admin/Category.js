@@ -94,6 +94,7 @@ export default function AdminCategory() {
       <Jumbotron
         title={`Hello ${auth?.user?.name}`}
         subTitle="Admin Dashboard"
+        img="/images/baobab.png.jpg"
       />
       {/*<pre>{JSON.stringify(auth, null, 4)}</pre>*/}
 

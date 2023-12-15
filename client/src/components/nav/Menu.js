@@ -58,11 +58,6 @@ export default function Menu() {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/shop">
-                  SHOP
-                </NavLink>
-              </li>
 
               <div className="dropdown">
                 <li>
@@ -109,6 +104,15 @@ export default function Menu() {
                 </NavLink>
               </li>
             </ul>
+            <div className="nav-item pointer">
+              <div>
+                <i class="fa fa-language" aria-hidden="true"></i>
+                <button onClick={() => changeLanguage("en")}>EN</button>
+                <button onClick={() => changeLanguage("fr")}>FR</button>
+                {/* Ajoutez d'autres boutons pour d'autres langues si nécessaire */}
+              </div>
+            </div>
+
             <NavLink to="/cart" className="btn btn-outline-dark m-2">
               <Badge
                 count={cart?.length >= 1 ? cart.length : 0}
@@ -119,11 +123,8 @@ export default function Menu() {
                 {/*state?.length*/}){" "}
               </Badge>
             </NavLink>
-            <NavLink to="/cart" className="btn btn-outline-dark m-2">
-              <i class="fa fa-language" aria-hidden="true"></i>
-            </NavLink>
             <div className="buttons text-center">
-              {auth?.user ? (
+              {!auth?.user ? (
                 <>
                   <NavLink to="/login" className="btn btn-outline-dark m-2">
                     <i className="fa fa-sign-in-alt mr-1"></i> Login

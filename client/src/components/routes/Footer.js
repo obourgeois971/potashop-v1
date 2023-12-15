@@ -14,7 +14,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Franceska & Olivier
+                Franceska & Co
               </a>
             </p>
             <a
@@ -23,7 +23,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <i className="fa fa-github"></i>
+              <i class="fa-solid fa-tree"></i>
             </a>
           </div>
         </div>

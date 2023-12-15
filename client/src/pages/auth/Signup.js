@@ -44,7 +44,7 @@ export default function Signup() {
 
   return (
     <div>
-      <Jumbotron title="Register" />
+      <Jumbotron title="Register" img="/images/baobab.png.jpg" />
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-6 offset-md-3">

@@ -24,6 +24,7 @@ export default function Cart() {
               }`
             : "Your cart is empty"
         }
+        img="/images/baobab.png.jpg"
       />
 
       <div className="container-fluid">

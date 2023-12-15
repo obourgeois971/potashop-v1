@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   /** State */
@@ -16,10 +17,6 @@ export default function Login() {
   const location = useLocation();
 
   const handleSubmit = async (e) => {
-    /** Utilisez la preventDefault()méthode sur
-     * l'objet événement pour empêcher l'actualisation
-     * de la page lors de la soumission du formulaire dans React,
-     * par exemple event.preventDefault(). */
     e.preventDefault();
     try {
       const { data } = await axios.post(`/login`, {
@@ -49,7 +46,7 @@ export default function Login() {
 
   return (
     <div>
-      <Jumbotron title="Login" />
+      <Jumbotron title="Login" img="/images/baobab.png.jpg" />
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-6 offset-md-3">
@@ -69,9 +66,35 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <button className="btn btn-primary" type="submit">
-                Submit
-              </button>
+              <div className="my-3">
+                <p>
+                  New Here?{" "}
+                  <Link
+                    to="/register"
+                    className="text-decoration-underline text-info"
+                  >
+                    Register
+                  </Link>{" "}
+                </p>
+              </div>
+              <div className="my-3">
+                <p>
+                  I forgot my password{" "}
+                  <Link
+                    to="/register"
+                    className="text-decoration-underline text-info"
+                  >
+                    Register
+                  </Link>{" "}
+                </p>
+              </div>
+              <div className="text-center">
+                {email && password && (
+                  <button class="my-2 mx-auto btn btn-dark" type="submit">
+                    Login
+                  </button>
+                )}
+              </div>
             </form>
           </div>
         </div>

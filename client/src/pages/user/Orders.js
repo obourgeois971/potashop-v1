@@ -28,7 +28,11 @@ export default function UserOrders() {
 
   return (
     <>
-      <Jumbotron title={`Hello ${auth?.user?.name}`} subTitle="Dashboard" />
+      <Jumbotron
+        title={`Hello ${auth?.user?.name}`}
+        subTitle="Dashboard"
+        img="/images/baobab.png.jpg"
+      />
       {/*<pre>{JSON.stringify(auth, null, 4)}</pre>*/}
 
       <div className="container-fluid">

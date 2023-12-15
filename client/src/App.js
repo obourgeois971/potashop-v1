@@ -25,6 +25,11 @@ import Signup from "./pages/auth/Signup";
 import AccountActivation from "./pages/auth/AccountActivation";
 import Footer from "./components/routes/Footer";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+
 const PageNotFound = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
@@ -36,10 +41,13 @@ const PageNotFound = () => {
 export default function App() {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <Menu />
       <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/search" element={<Search />} />
